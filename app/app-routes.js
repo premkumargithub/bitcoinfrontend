@@ -31,6 +31,26 @@ app.config(['$routeProvider', '$controllerProvider', '$compileProvider', '$filte
             }]
         }
     }).
+    when('/signup', {
+        templateUrl: 'app/views/signup.html',
+        controller: 'UserController',
+        resolve:{
+            load: ['$q', '$rootScope', function($q, $rootScope) {
+            var deferred = $q.defer();
+            var dependencies = [
+                'app/js/services/user',
+                'app/js/controllers/user'
+            ];
+            require(dependencies, function() {
+            $rootScope.$apply(function() {
+                deferred.resolve();
+            });
+            });
+
+            return deferred.promise;
+            }]
+        }
+    }).
     when('/dashboard', {
         templateUrl: 'app/views/dashboard.html'
     }).

@@ -20,8 +20,9 @@ app.controller('UserController', ['$scope', 'UserService', function ($scope, Use
 	}
 
 	//Registration
-	$scope.Registration = function() {
-		
+	$scope.registration = function() {
+		console.log("Going to register...");
+		console.log($scope.user);
 	}
 
 	$scope.loginReset = function() {
